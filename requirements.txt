@@ -1,0 +1,8 @@
+tensorflow
+scikit-learn
+numpy
+pandas
+matplotlib
+seaborn
+scikit-image
+dvc

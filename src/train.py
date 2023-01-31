@@ -80,12 +80,12 @@ def main():
     model = get_model()
 
     callbacks = [
-        tf.keras.callbacks.ModelCheckpoint(
-            model_path / "model.keras", monitor="val_accuracy", save_best_only=True
-        ),
-        tf.keras.callbacks.EarlyStopping(monitor="val_accuracy", patience=5),
-        tf.keras.callbacks.CSVLogger("metrics.csv"),
-        DVCLiveCallback(),
+        # tf.keras.callbacks.ModelCheckpoint(
+        #     model_path / "model.keras", monitor="val_accuracy", save_best_only=True
+        # ),
+        # tf.keras.callbacks.EarlyStopping(monitor="val_accuracy", patience=5),
+        # tf.keras.callbacks.CSVLogger("metrics.csv"),
+        DVCLiveCallback(save_dvc_exp=True),
     ]
 
     history = model.fit(

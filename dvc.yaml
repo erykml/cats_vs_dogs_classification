@@ -9,3 +9,5 @@ stages:
     outs:
       - models
       - metrics.csv
+      - dvclive:
+          cache: False

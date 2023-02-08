@@ -9,5 +9,6 @@ stages:
     outs:
       - models
       - metrics.csv
-      - dvclive:
+      - dvclive/metrics.json:
           cache: False
+      - dvclive/plots

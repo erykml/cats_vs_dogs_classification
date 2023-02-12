@@ -73,7 +73,6 @@ def get_model():
 
 
 def main():
-
     model_path = BASE_DIR / "models"
     model_path.mkdir(parents=True, exist_ok=True)
 

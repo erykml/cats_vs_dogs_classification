@@ -8,8 +8,8 @@ stages:
       size: 68556176
       nfiles: 3000
     - path: src/train.py
-      md5: 15c67cdb0f4747293ec64566e4922509
-      size: 2808
+      md5: 703afcee03e738fae2477053e199eaa1
+      size: 2729
     params:
       params.yaml:
         train:
@@ -17,16 +17,19 @@ stages:
           image_height: 180
           batch_size: 32
           learning_rate: 0.1
-          n_epochs: 5
+          n_epochs: 15
     outs:
-    - path: dvclive
-      md5: 205736a0e67053dceb9f099de943216d.dir
-      size: 14253
-      nfiles: 11
+    - path: dvclive/metrics.json
+      md5: 95343f908cba7b1adfbef79f6c24de5e
+      size: 372
+    - path: dvclive/plots
+      md5: cd4280169ed33f592bbe1ac114bc9cb9.dir
+      size: 2661
+      nfiles: 8
     - path: metrics.csv
-      md5: eb56c1bf7aab8978cf0dd93d18f740df
-      size: 844
+      md5: d8d1661f0d9042085df37e3c9db3aa40
+      size: 2414
     - path: models
-      md5: a6fa0957c45416df40c4f2cfa783c955.dir
+      md5: 4a6b8e884cafad654470845a5432d7ec.dir
       size: 94716288
       nfiles: 1

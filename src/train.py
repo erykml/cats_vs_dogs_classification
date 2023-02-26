@@ -94,8 +94,6 @@ def main():
         callbacks=callbacks,
     )
 
-    pd.DataFrame(history.history).to_csv("metrics.csv", index=False)
-
 
 if __name__ == "__main__":
     main()

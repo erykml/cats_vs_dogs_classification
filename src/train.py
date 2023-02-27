@@ -1,8 +1,8 @@
+import os
 from pathlib import Path
+
 import tensorflow as tf
 from dvc.api import params_show
-import pandas as pd
-import os
 from dvclive.keras import DVCLiveCallback
 
 # data directories
@@ -47,11 +47,9 @@ def get_model():
     base_model = tf.keras.applications.ResNet50(
         input_shape=IMG_SHAPE, include_top=False, weights="imagenet"
     )
-
     base_model.trainable = False
 
     global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
-
     prediction_layer = tf.keras.layers.Dense(1)
 
     inputs = tf.keras.Input(shape=IMG_SHAPE)
@@ -64,9 +62,10 @@ def get_model():
     model = tf.keras.Model(inputs, outputs)
 
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(),
+        optimizer=tf.keras.optimizers.Adam(learning_rate=LR),
         loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-        metrics=["accuracy", tf.keras.metrics.Precision(), tf.keras.metrics.Recall()],
+        # metrics=["accuracy", tf.keras.metrics.Precision(), tf.keras.metrics.Recall()],
+        metrics=["accuracy"],
     )
 
     return model

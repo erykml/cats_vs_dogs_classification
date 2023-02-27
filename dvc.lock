@@ -4,12 +4,12 @@ stages:
     cmd: python src/train.py
     deps:
     - path: data/raw
-      md5: e28a766c059088e413d563861cc4d7a7.dir
-      size: 68556176
-      nfiles: 3000
+      md5: 3fc779a91ebae4c753c29bb71372556b.dir
+      size: 68568472
+      nfiles: 3002
     - path: src/train.py
-      md5: 703afcee03e738fae2477053e199eaa1
-      size: 2729
+      md5: e651ea7e54db9abc378f942d01d5996b
+      size: 2756
     params:
       params.yaml:
         train:
@@ -20,16 +20,16 @@ stages:
           n_epochs: 15
     outs:
     - path: dvclive/metrics.json
-      md5: 6e6876e39bef9db836893e576dea5795
-      size: 370
+      md5: 746e048d645c01b171fa440d76212929
+      size: 212
     - path: dvclive/plots
-      md5: 542a9c9a135d4fbf6921881407821278.dir
-      size: 2686
-      nfiles: 8
+      md5: ee6913845b170df2cf757e38202d0502.dir
+      size: 1345
+      nfiles: 4
     - path: metrics.csv
-      md5: 18f75e667fd1a3cb94e312e935276225
-      size: 2439
+      md5: 03ef1e22c7add793792acd50dfc4dd86
+      size: 1250
     - path: models
-      md5: 6a5be84f56ad7cf5feb37b4eebdf3c7d.dir
+      md5: 497299089b39ee690425725412760507.dir
       size: 94716288
       nfiles: 1

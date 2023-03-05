@@ -83,33 +83,34 @@ def main():
 
     model = get_model()
 
-    live = Live(save_dvc_exp=True)
+    with Live(save_dvc_exp=True) as live:
 
-    callbacks = [
-        tf.keras.callbacks.ModelCheckpoint(
-            model_path / "model.keras", monitor="val_accuracy", save_best_only=True
-        ),
-        # tf.keras.callbacks.EarlyStopping(monitor="val_accuracy", patience=5),
-        tf.keras.callbacks.CSVLogger("metrics.csv"),
-        DVCLiveCallback(live=live),
-    ]
+        callbacks = [
+            tf.keras.callbacks.ModelCheckpoint(
+                model_path / "model.keras", monitor="val_accuracy", save_best_only=True
+            ),
+            # tf.keras.callbacks.EarlyStopping(monitor="val_accuracy", patience=5),
+            tf.keras.callbacks.CSVLogger("metrics.csv"),
+            DVCLiveCallback(live=live),
+        ]
 
-    history = model.fit(
-        train_dataset,
-        epochs=N_EPOCHS,
-        validation_data=validation_dataset,
-        callbacks=callbacks,
-    )
+        history = model.fit(
+            train_dataset,
+            epochs=N_EPOCHS,
+            validation_data=validation_dataset,
+            callbacks=callbacks,
+        )
+        
+        model.load_weights(str(model_path / "model.keras"))
+        y_pred = np.array([])
+        y_true = np.array([])
+        for x, y in validation_dataset:
+            y_pred = np.concatenate([y_pred, model.predict(x).flatten()])
+            y_true = np.concatenate([y_true, y.numpy()])
 
-    y_pred = np.array([])
-    y_true = np.array([])
-    for x, y in validation_dataset:
-        y_pred = np.concatenate([y_pred, model.predict(x).flatten()])
-        y_true = np.concatenate([y_true, y.numpy()])
+        y_pred = np.where(y_pred > 0, 1, 0)
 
-    y_pred = np.where(y_pred > 0, 1, 0)
-
-    live.log_sklearn_plot("confusion_matrix", y_true, y_pred)
+        live.log_sklearn_plot("confusion_matrix", y_true, y_pred)
 
 
 if __name__ == "__main__":

@@ -2,5 +2,5 @@ train:
   image_width: 180
   image_height: 180
   batch_size: 32
-  learning_rate: 0.01
+  learning_rate: 0.1
   n_epochs: 5

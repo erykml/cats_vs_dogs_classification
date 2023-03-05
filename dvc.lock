@@ -16,20 +16,20 @@ stages:
           image_width: 180
           image_height: 180
           batch_size: 32
-          learning_rate: 0.01
+          learning_rate: 0.1
           n_epochs: 5
     outs:
     - path: dvclive/metrics.json
-      md5: 97331bd24817d4bd26d45ec55a4f00f8
-      size: 212
+      md5: e9ad3a3f1d90a006f311c4ccfee0cacf
+      size: 210
     - path: dvclive/plots
-      md5: a7ecf93bb726a20018d5e2e3bddfd204.dir
-      size: 63479
+      md5: 619cd70715419bf3f670be0fee2b6e00.dir
+      size: 63469
       nfiles: 5
     - path: metrics.csv
-      md5: 7003607e34e80b213767ecaa133d5ceb
-      size: 447
+      md5: 75bf55ccca7245bf19dfc3dc423d4f1c
+      size: 437
     - path: models
-      md5: 861e433f5d11ec0e51bf070e3950c1d6.dir
+      md5: 90eb1d85cd232b3afa2fe65d18212a32.dir
       size: 94716288
       nfiles: 1
